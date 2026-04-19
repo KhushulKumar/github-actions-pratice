@@ -1,7 +1,6 @@
 name:  File operations in github
  
-on:
-  push:
+on: push
   
 jobs:
     files:
@@ -17,4 +16,4 @@ jobs:
               run: ls -lrth
 
             - name: display pwd 
-              run: pwd
+              run: pwd  
