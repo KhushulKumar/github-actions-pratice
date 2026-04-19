@@ -1,0 +1,51 @@
+name: KK FUNDA Core Concepts Demo
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+
+  build-job:
+    name: Build Stage
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: diplay test
+        run: echo "This testt-5.yaml"  
+      - name: Checkout code
+        uses: actions/checkout@v5   # ✅ updated
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5   # ✅ updated
+        with:
+          node-version: 20
+          cache: 'npm'   # ⚡ speeds up builds
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build App
+        run: npm run build
+
+
+  test-job:
+    name: Testing Stage
+    runs-on: ubuntu-latest
+    needs: build-job
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5   # ✅ updated
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5   # ✅ REQUIRED
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm install   # ✅ REQUIRED
+
+      - name: Run Tests
+        run: npm test
