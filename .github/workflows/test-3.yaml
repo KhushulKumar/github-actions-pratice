@@ -7,7 +7,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: create a one file
-              run: echo" HI khushul   " > devops.txt
+              run: echo" HIkhushul 123" > devops.txt
             
             - name: display content
               run: cat devops.txt
