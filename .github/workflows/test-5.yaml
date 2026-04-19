@@ -11,16 +11,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: diplay test
-        run: echo "This testt-5.yaml"  
       - name: Checkout code
-        uses: actions/checkout@v5   # ✅ updated
+        uses: actions/checkout@v5
 
       - name: Setup Node.js
-        uses: actions/setup-node@v5   # ✅ updated
+        uses: actions/setup-node@v5
         with:
           node-version: 20
-          cache: 'npm'   # ⚡ speeds up builds
+          cache: 'npm'   # ✅ works only if package-lock.json exists
 
       - name: Install Dependencies
         run: npm install
@@ -36,16 +34,16 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5   # ✅ updated
+        uses: actions/checkout@v5
 
       - name: Setup Node.js
-        uses: actions/setup-node@v5   # ✅ REQUIRED
+        uses: actions/setup-node@v5
         with:
           node-version: 20
           cache: 'npm'
 
       - name: Install Dependencies
-        run: npm install   # ✅ REQUIRED
+        run: npm install
 
       - name: Run Tests
         run: npm test
