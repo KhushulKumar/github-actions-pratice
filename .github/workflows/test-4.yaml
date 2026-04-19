@@ -2,7 +2,7 @@ name: KK FUNDA Core Concepts Demo
 
 on:
   push:
-    branches: [ main ]
+    
 
 jobs:
 
